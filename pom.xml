@@ -16,9 +16,9 @@
 		<maven.compiler.plugin.version>3.1</maven.compiler.plugin.version>
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<nexus.url.public>http://nexus.lhdna.com/nexus/content/groups/public</nexus.url.public>
-		<nexus.url.releases>http://nexus.lhdna.com/nexus/content/repositories/releases</nexus.url.releases>
-		<nexus.url.snapshots>http://nexus.lhdna.com/nexus/content/repositories/snapshots</nexus.url.snapshots>
+		<nexus.url.public>http://#/nexus/content/groups/public</nexus.url.public>
+		<nexus.url.releases>http://#/nexus/content/repositories/releases</nexus.url.releases>
+		<nexus.url.snapshots>http://#/nexus/content/repositories/snapshots</nexus.url.snapshots>
 
 
 		<spring.boot.version>1.2.7.RELEASE</spring.boot.version>
