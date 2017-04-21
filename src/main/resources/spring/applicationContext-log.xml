@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 自动扫描包开启注解 -->
+	<aop:config proxy-target-class="true" />
+	<bean id="logService" class="com.lw.rpc.handler.LogResolver" />
+	<!-- 系统日志切面 -->
+	<aop:config>
+		<!-- 切入点 -->
+		<aop:pointcut id="pointcutLog"
+			expression="execution(* com.lw.rpc.*.controller.*.*(..)) and @annotation(logInfo)" />
+		<aop:aspect ref="logService">
+			<aop:after method="afterSysLog" pointcut-ref="pointcutLog" />
+		</aop:aspect>
+	</aop:config>
+</beans>

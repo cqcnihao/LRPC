@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation=" http://www.springframework.org/schema/aop 
+  	http://www.springframework.org/schema/aop/spring-aop-4.0.xsd 
+	http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context
+	 http://www.springframework.org/schema/context/spring-context.xsd
+	 ">
+	 
+	<aop:aspectj-autoproxy />
+
+	<!-- 集中加载配置文件 -->
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:properties/datasource/init.properties
+				</value>
+				<value>classpath:properties/redis/redis-conf.properties
+				</value>
+				<value>classpath:properties/server/server-config.properties
+				</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- 导入rpc-server -->
+	<!-- <import resource="spring-rpc-server.xml" /> -->
+
+	<!-- 导入SPRING配置文件 -->
+	<!-- Transaction -->
+	<!-- <import resource="applicationContext-tx.xml" /> -->
+
+	<!-- Log interceptor -->
+	<!-- <import resource="applicationContext-log.xml" /> -->
+
+	<!-- Redis -->
+	<!-- <import resource="applicationContext-redis.xml" /> -->
+
+	<!-- component scan -->
+	<context:component-scan base-package="com.lw.rpc"
+		use-default-filters="false">
+		<context:include-filter type="annotation"
+			expression="org.springframework.stereotype.Repository" />
+		<context:include-filter type="annotation"
+			expression="org.springframework.stereotype.Service" />
+	</context:component-scan>
+
+	<!-- 声明通知类 -->
+	<!-- <bean id="aspectJAdviceAop" class="com.lw.rpc.test.AspectJAdviceAop" 
+		/> <aop:config> <aop:aspect id="useAapect" ref="aspectJAdviceAop" > 配置切点 
+		<aop:pointcut expression="execution(* com.lw.rpc..*.*(..))" id="point_cut"/> 
+		前置通知 <aop:before method="beforeAdvice" pointcut-ref="point_cut"/> <aop:pointcut 
+		id="except_add" expression="execution(* com.lw.rpc..*.*(..)))" /> 后置通知 returning指定返回参数 
+		，如果不设置这个返回参数，你可以亲自试一下，看看是什么效果 <aop:after-returning method="afterAdvice" pointcut-ref="point_cut" 
+		returning="result" /> 环绕 <aop:around method="aroundAdvice" pointcut-ref="point_cut"/> 
+		throw中 <aop:after-throwing method="afterThrow" pointcut-ref="point_cut" throwing="e"/> 
+		</aop:aspect> </aop:config> -->
+
+</beans>
