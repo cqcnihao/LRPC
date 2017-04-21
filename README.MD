@@ -1,1 +1,1 @@
-# LRPC
+# 本工程是基于netty和zookeeper做的一个rpc框架，后续会写出配置文件和各个包的说明
