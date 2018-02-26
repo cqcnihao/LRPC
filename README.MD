@@ -1,1 +1,1 @@
-# 本工程是基于netty和zookeeper做的一个rpc框架，后续会写出配置文件和各个包的说明
+# 本工程是基于netty,zookeeper，spring，Java语言做的一个轻量级框架，欢迎大牛指出错误之处。
